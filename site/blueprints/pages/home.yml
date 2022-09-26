@@ -1,0 +1,15 @@
+title: One Pager
+icon: 📔
+
+sections:
+  parts:
+    label: Parts
+    type: pages
+    status: all
+    info: "{{ page.intendedTemplate }}"
+    image: false
+    templates:
+      - pager-headline
+      - pager-hero
+      - pager-text
+      - pager-video

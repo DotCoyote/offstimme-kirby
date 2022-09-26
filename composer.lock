@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae50593ef9edf1c7a114ea3c173c6059",
+    "content-hash": "79938c03dee1e385fb37b98e0f404f4b",
     "packages": [
         {
             "name": "arnoson/kirby-vite",
