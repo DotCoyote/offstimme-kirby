@@ -1,0 +1,132 @@
+:root {
+    --hero-animation-duration: 40s;
+}
+
+@keyframes heroSlide1 {
+    0% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes heroSlide2 {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes heroSlide3 {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes heroSlide4 {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes heroSlide5 {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.hero-slider {
+
+}
+
+.hero-slider-image:nth-child(1) {
+    animation: heroSlide1 var(--hero-animation-duration) infinite;
+}
+
+.hero-slider-image:nth-child(2) {
+    animation: heroSlide2 var(--hero-animation-duration) infinite;
+}
+
+.hero-slider-image:nth-child(3) {
+    animation: heroSlide3 var(--hero-animation-duration) infinite;
+}
+
+.hero-slider-image:nth-child(4) {
+    animation: heroSlide4 var(--hero-animation-duration) infinite;
+}
+
+.hero-slider-image:nth-child(5) {
+    animation: heroSlide5 var(--hero-animation-duration) infinite;
+}

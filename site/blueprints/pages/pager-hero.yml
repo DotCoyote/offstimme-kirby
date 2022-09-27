@@ -1,0 +1,15 @@
+title: Hero Slider
+
+icon: image
+image:
+  back: blue-200
+  icon: 📝
+
+sections:
+  images:
+    type: files
+    template: pager-hero
+    layout: cards
+    info: "{{ file.caption }}"
+    min: 1
+    max: 5

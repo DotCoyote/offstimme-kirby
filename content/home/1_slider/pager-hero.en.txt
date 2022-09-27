@@ -1,0 +1,118 @@
+Title: Slider
+
+----
+
+Sliderimages:
+
+- 
+  id: home/slider/home-slider-img01.jpg
+  image:
+    back: pattern
+    color: orange-400
+    cover: false
+    icon: image
+    ratio: 3/2
+    url: >
+      http://localhost:8888/media/pages/home/slider/587fb7c8c5-1664279287/home-slider-img01.jpg
+    src: >
+      data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw
+    srcset: >
+      http://localhost:8888/media/pages/home/slider/587fb7c8c5-1664279287/home-slider-img01-38x.jpg
+      38w,
+      http://localhost:8888/media/pages/home/slider/587fb7c8c5-1664279287/home-slider-img01-76x.jpg
+      76w
+  info: ""
+  link: >
+    /pages/home+slider/files/home-slider-img01.jpg
+  sortable: true
+  text: home-slider-img01.jpg
+  filename: home-slider-img01.jpg
+  dragText: '(image: home-slider-img01.jpg)'
+  type: image
+  url: >
+    http://localhost:8888/media/pages/home/slider/587fb7c8c5-1664279287/home-slider-img01.jpg
+  uuid: home-slider-img01.jpg
+- 
+  id: home/slider/home-slider-img02.jpg
+  image:
+    back: pattern
+    color: orange-400
+    cover: false
+    icon: image
+    ratio: 3/2
+    url: >
+      http://localhost:8888/media/pages/home/slider/1e21d91feb-1664279287/home-slider-img02.jpg
+    src: >
+      data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw
+    srcset: >
+      http://localhost:8888/media/pages/home/slider/1e21d91feb-1664279287/home-slider-img02-38x.jpg
+      38w,
+      http://localhost:8888/media/pages/home/slider/1e21d91feb-1664279287/home-slider-img02-76x.jpg
+      76w
+  info: ""
+  link: >
+    /pages/home+slider/files/home-slider-img02.jpg
+  sortable: true
+  text: home-slider-img02.jpg
+  filename: home-slider-img02.jpg
+  dragText: '(image: home-slider-img02.jpg)'
+  type: image
+  url: >
+    http://localhost:8888/media/pages/home/slider/1e21d91feb-1664279287/home-slider-img02.jpg
+  uuid: home-slider-img02.jpg
+- 
+  id: home/slider/home-slider-img04.jpg
+  image:
+    back: pattern
+    color: orange-400
+    cover: false
+    icon: image
+    ratio: 3/2
+    url: >
+      http://localhost:8888/media/pages/home/slider/02b0cbc10d-1664279287/home-slider-img04.jpg
+    src: >
+      data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw
+    srcset: >
+      http://localhost:8888/media/pages/home/slider/02b0cbc10d-1664279287/home-slider-img04-38x.jpg
+      38w,
+      http://localhost:8888/media/pages/home/slider/02b0cbc10d-1664279287/home-slider-img04-76x.jpg
+      76w
+  info: ""
+  link: >
+    /pages/home+slider/files/home-slider-img04.jpg
+  sortable: true
+  text: home-slider-img04.jpg
+  filename: home-slider-img04.jpg
+  dragText: '(image: home-slider-img04.jpg)'
+  type: image
+  url: >
+    http://localhost:8888/media/pages/home/slider/02b0cbc10d-1664279287/home-slider-img04.jpg
+  uuid: home-slider-img04.jpg
+- 
+  id: home/slider/home-slider-img03.jpg
+  image:
+    back: pattern
+    color: orange-400
+    cover: false
+    icon: image
+    ratio: 3/2
+    url: >
+      http://localhost:8888/media/pages/home/slider/3bb6d3f959-1664279287/home-slider-img03.jpg
+    src: >
+      data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw
+    srcset: >
+      http://localhost:8888/media/pages/home/slider/3bb6d3f959-1664279287/home-slider-img03-38x.jpg
+      38w,
+      http://localhost:8888/media/pages/home/slider/3bb6d3f959-1664279287/home-slider-img03-76x.jpg
+      76w
+  info: ""
+  link: >
+    /pages/home+slider/files/home-slider-img03.jpg
+  sortable: true
+  text: home-slider-img03.jpg
+  filename: home-slider-img03.jpg
+  dragText: '(image: home-slider-img03.jpg)'
+  type: image
+  url: >
+    http://localhost:8888/media/pages/home/slider/3bb6d3f959-1664279287/home-slider-img03.jpg
+  uuid: home-slider-img03.jpg

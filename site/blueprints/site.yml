@@ -1,0 +1,7 @@
+columns:
+  main:
+    width: 2/3
+    sections:
+      pages:
+        label: Pages
+        type: pages
