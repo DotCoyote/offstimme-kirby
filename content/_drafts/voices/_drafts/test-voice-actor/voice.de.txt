@@ -1,0 +1,49 @@
+Title: Test voice actor
+
+----
+
+Sex: 
+
+----
+
+Isvip: false
+
+----
+
+Showcase: false
+
+----
+
+Language: languages/german
+
+----
+
+Country: 
+
+----
+
+Countryflag1: 
+
+----
+
+Countryflag2: 
+
+----
+
+Voiceprobe1: 
+
+----
+
+Voiceprobe2: 
+
+----
+
+Image: 
+
+----
+
+Voicestyle: middle
+
+----
+
+Voiceage: mature

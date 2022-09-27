@@ -1,0 +1,145 @@
+title: Voice Actor
+
+num: '{{ page.created.toDate("Ymd") }}'
+
+status:
+  draft: Draft
+  listed: Published
+
+icon: audio
+
+image:
+  back: blue-200
+  icon: 📝
+
+columns:
+  main:
+    width: 2/3
+    fields:
+      sex:
+        label: Sex
+        type: select
+        options:
+          female: Female
+          male: Male
+          diverse: Diverse
+      isVip:
+        width: 1/2
+        label: Is this Actor a VIP-Actor?
+        type: toggle
+        text:
+          - "no"
+          - "yes"
+      showcase:
+        width: 1/2
+        label: Show this actor in the showcase container
+        type: toggle
+        text:
+          - "no"
+          - "yes"
+      language:
+        width: 1/2
+        label: Language
+        type: select
+        options: query
+        query: site.children.published.template("languages").children
+
+
+      #          german: German
+      #          englishUK: English (England)
+      #          englishUS: English (USA)
+      #          spanish: Spanish
+      #          norwegian: Norwegian
+      #          arabic: Arabic
+      #          whiteRussian: White-Russian
+      #          bosnian: Bosnian
+      #          portugueseBraz: Portuguese (brazilian)
+      #          bulgarian: Bulgarian
+      #          englishCan: English (Canadian)
+      #          czech: Czech
+      #          danish: Danish
+      #          netherlands: Netherlands
+      #          estonian: Estonian
+      #          finnish: Finnish
+      #          french: French
+      #          greek: Greek
+      #          hindi: Hindi
+      #          hungarian: Hungarian
+      #          englishInd: English (Indian)
+      #          indonesian: Indonesian
+      #          englishIre: English (Ireland)
+      #          italian: Italian
+      #          japanese: Japanese
+      #          korean: Korean
+      #          latvian: Latvian
+      #          lithuanian: Lithuanian
+      #          malaysian: Malaysian
+      #          persian: Persian
+      #          polish: Polish
+      #          portuguese: Portuguese
+      #          frenchQueb: French (Quebecois)
+      #          romanian: Romanian
+      #          russian: Russian
+      #          englishScot: English (Scottish)
+      #          serbian: Serbian
+      #          slovak: Slovak
+      #          englishSA: English (South African)
+      #          swedish: Swedish
+      #          germanCH: German (Swiss)
+
+      country:
+        label: Country
+        type: text
+      countryFlag1:
+        width: 1/2
+        label: Country Flag 1
+        type: files
+        multiple: false
+        accept:
+          mime: image/*
+          type: image
+      countryFlag2:
+        width: 1/2
+        label: Country Flag 2
+        type: files
+        multiple: false
+        accept:
+          mime: image/*
+          type: image
+      voiceProbe1:
+        width: 1/2
+        label: Voice Probe 1
+        type: files
+        multiple: false
+      voiceProbe2:
+        width: 1/2
+        label: Voice Probe 2
+        type: files
+        multiple: false
+
+  sidebar:
+    width: 1/3
+    fields:
+      image:
+        label: Image of the actor
+        type: files
+        multiple: false
+        accept:
+          mime: image/*
+          type: image
+      voiceStyle:
+        label: The style of the voice
+        type: multiselect
+        min: 1
+        options:
+          deep: Deep
+          middle: Middle
+          light: Light
+      voiceAge:
+        label: The age of the voice
+        type: multiselect
+        min: 1
+        options:
+          adult: Adult
+          mature: Mature
+          youngAdult: Young Adult

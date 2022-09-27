@@ -1,0 +1,6 @@
+type: pages
+label: Voice Actors
+info: "{{ page.date.toDate('d.m.Y') }}"
+template: voice
+empty: No voice actors yet
+sortBy: date desc

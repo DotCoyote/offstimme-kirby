@@ -1,0 +1,11 @@
+title: Voices
+
+sections:
+  parts:
+    label: Parts
+    type: pages
+    status: all
+    info: "{{ page.intendedTemplate }}"
+    image: false
+    templates:
+      - voice
