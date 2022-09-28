@@ -5,5 +5,5 @@ return [
     'direction' => 'ltr',
     'locale' => 'de_DE',
     'name' => 'German',
-    'url' => '/de/',
+    'url' => '/de',
 ];

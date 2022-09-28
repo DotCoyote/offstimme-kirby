@@ -34,6 +34,9 @@
     </section>
 </footer>
 
+<script>
+    window.csrf = "<?= csrf() ?>";
+</script>
 <?= vite()->js() ?>
 </body>
 </html>

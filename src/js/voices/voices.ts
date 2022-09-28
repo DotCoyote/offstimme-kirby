@@ -1,5 +1,5 @@
-import {createApp} from "vue";
-import VoicesTemplate from './VoicesTemplate.vue'
+import { createApp } from 'vue';
+import VoicesTemplate from './VoicesTemplate.vue';
 
 const app = createApp(VoicesTemplate);
 
