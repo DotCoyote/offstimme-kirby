@@ -5,7 +5,7 @@ const voices = ref();
 
 async function requestVoices() {
   try {
-    const response = await fetch('/api/pages/voices/children', {
+    const response = await fetch('/api/pages/voices/children?select=content', {
       method: 'GET',
       headers: {
         'X-CSRF': window.csrf,

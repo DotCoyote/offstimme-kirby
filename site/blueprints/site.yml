@@ -5,6 +5,10 @@ columns:
       pages:
         label: Pages
         type: pages
+      configs:
+        label: Configs
+        type: pages
+        templates: languages
 
   sidebar:
     width: 1/3

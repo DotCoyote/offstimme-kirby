@@ -1,1 +1,21 @@
 Title: Languages
+
+----
+
+Languages:
+
+- 
+  title: German
+  id: german
+- 
+  title: English (England)
+  id: englishuk
+- 
+  title: English (USA)
+  id: englishus
+- 
+  title: Spanish
+  id: spanish
+- 
+  title: Norwegian
+  id: norwegian

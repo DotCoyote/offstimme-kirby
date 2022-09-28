@@ -1,11 +1,16 @@
 title: Voice Actor Languaes
 
 sections:
-  parts:
-    label: Languages
-    type: pages
-    status: all
-    info: "{{ page.intendedTemplate }}"
-    image: false
-    templates:
-      - language
+  content:
+    type: fields
+    fields:
+      languages:
+        label: Languages
+        type: structure
+        fields:
+          title:
+            label: Title
+            type: text
+          id:
+            label: id
+            type: slug

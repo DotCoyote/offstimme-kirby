@@ -42,7 +42,10 @@ columns:
         label: Language
         type: select
         options: query
-        query: site.children.published.template("languages").children
+        query:
+          fetch: site.find("languages").languages.toStructure
+          text: "{{ structureItem.title }}"
+          value: "{{ structureItem.id }}"
 
 
       #          german: German
