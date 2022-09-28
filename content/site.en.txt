@@ -1,0 +1,14 @@
+Sociallinks:
+
+- 
+  url: //www.twitter.com/offstimme
+  iconname: twitter
+- 
+  url: //www.facebook.com/offstimme
+  iconname: facebook
+- 
+  url: //www.linkedin.com/in/peterseatonclark
+  iconname: linked-in
+- 
+  url: //www.xing.com/profile/Peter_SeatonClark
+  iconname: xing

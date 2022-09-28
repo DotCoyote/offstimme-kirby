@@ -5,3 +5,17 @@ columns:
       pages:
         label: Pages
         type: pages
+
+  sidebar:
+    width: 1/3
+    fields:
+      socialLinks:
+        label: Social Links
+        type: structure
+        fields:
+          url:
+            label: URL
+            type: text
+          iconName:
+            label: Icon Name
+            type: slug
