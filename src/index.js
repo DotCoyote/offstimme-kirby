@@ -1,4 +1,6 @@
 import './index.css';
 import './js/scrollTo';
 
-console.log('Hello kirby!');
+if (document.querySelector('.js-voices-component')) {
+  import('./js/voices/voices');
+}
