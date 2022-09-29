@@ -14,7 +14,7 @@ Showcase: false
 
 ----
 
-Language: languages/german
+Language: 
 
 ----
 
@@ -30,7 +30,10 @@ Countryflag2:
 
 ----
 
-Voiceprobe1: - offstimme_de_de_f_anne_kathrin_s_1.mp3
+Voiceprobe1:
+
+- >
+  voices_audio/offstimme_de_de_f_anne_kathrin_s_1.mp3
 
 ----
 
@@ -46,4 +49,4 @@ Voicestyle: middle
 
 ----
 
-Voiceage: adult
+Voiceage: mature

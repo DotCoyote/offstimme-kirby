@@ -12,3 +12,7 @@ Sociallinks:
 - 
   url: //www.xing.com/profile/Peter_SeatonClark
   iconname: xing
+
+----
+
+Heroimage: - file://MWWiHccSlWEndsiB

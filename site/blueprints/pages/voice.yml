@@ -114,11 +114,21 @@ columns:
         label: Voice Probe 1
         type: files
         multiple: false
+        uploads:
+          parent: site.find("voices-audio")
+          template: voices-audio
+          accept:
+            extension: mp3
       voiceProbe2:
         width: 1/2
         label: Voice Probe 2
         type: files
         multiple: false
+        uploads:
+          parent: site.find("voices-audio")
+          template: voices-audio
+          accept:
+            extension: mp3
 
   sidebar:
     width: 1/3

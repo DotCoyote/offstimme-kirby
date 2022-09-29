@@ -1,4 +1,6 @@
-<?php /** @var Kirby\Cms\Page $heroPage */ ?>
+<?php
+/** @var Kirby\Cms\Page $heroPage */
+?>
 
 <div class="h-screen relative hero-slider">
     <?php foreach ($heroPage->files() as $image): ?>
@@ -8,7 +10,7 @@
     <div class="bg-primary-600 inset-0 absolute z-10 bg-opacity-70 flex justify-center items-center align-middle px-8 ">
         <a href="/" class="logo block [&>*]:w-[25rem] [&>*]:h-[5.125rem] [&>*]:max-w-full [&>*]:max-h-full text-white"
            title="Offstimme Logo">
-            <?= svg('src/assets/logo_horizontal.svg') ?>
+            <?= svg('src/assets/icons/logo_horizontal.svg') ?>
         </a>
 
         <div class="absolute bottom-8 inset-x-0 text-center text-white">

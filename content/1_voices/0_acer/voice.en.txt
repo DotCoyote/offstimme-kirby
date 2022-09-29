@@ -1,8 +1,8 @@
-Title: Test voice actor
+Title: Acer
 
 ----
 
-Sex: 
+Sex: female
 
 ----
 
@@ -14,11 +14,11 @@ Showcase: false
 
 ----
 
-Language: languages/german
+Language: german
 
 ----
 
-Country: 
+Country: Germany
 
 ----
 
@@ -30,7 +30,7 @@ Countryflag2:
 
 ----
 
-Voiceprobe1: 
+Voiceprobe1: - voices-audio/acer61.mp3
 
 ----
 
@@ -46,4 +46,4 @@ Voicestyle: middle
 
 ----
 
-Voiceage: mature
+Voiceage: adult

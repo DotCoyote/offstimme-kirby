@@ -1,0 +1,9 @@
+title: Voice Audio Samples
+
+columns:
+  main:
+    fields:
+      files:
+        label: Files
+        type: files
+        multiple: true
