@@ -93,39 +93,10 @@ columns:
       country:
         label: Country
         type: text
-      countryFlag1:
-        width: 1/2
-        label: Country Flag 1
+      voiceProbes:
+        label: Voice Probes
         type: files
-        multiple: false
-        accept:
-          mime: image/*
-          type: image
-      countryFlag2:
-        width: 1/2
-        label: Country Flag 2
-        type: files
-        multiple: false
-        accept:
-          mime: image/*
-          type: image
-      voiceProbe1:
-        width: 1/2
-        label: Voice Probe 1
-        type: files
-        multiple: false
         uploads:
-          parent: site.find("voices-audio")
-          template: voices-audio
-          accept:
-            extension: mp3
-      voiceProbe2:
-        width: 1/2
-        label: Voice Probe 2
-        type: files
-        multiple: false
-        uploads:
-          parent: site.find("voices-audio")
           template: voices-audio
           accept:
             extension: mp3

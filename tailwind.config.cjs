@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [ './site/**/*.php', './src/**/*.{html,js,ts}' ],
+    content: [ './site/**/*.php', './src/**/*.{html,vue}' ],
     corePlugins: {
-        container: false,
+        container: true,
     },
     darkMode: 'media', // or 'class'
     theme: {
@@ -13,6 +13,9 @@ module.exports = {
                     600: '#b30000',
                 },
             },
+        },
+        container: {
+            center: true,
         },
     },
 

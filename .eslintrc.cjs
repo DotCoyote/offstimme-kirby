@@ -9,7 +9,7 @@ module.exports = {
         'airbnb',
         '@vue/typescript/recommended',
         'plugin:vue/vue3-recommended',
-        '@vue/eslint-config-prettier'
+        '@vue/eslint-config-prettier',
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
@@ -21,8 +21,18 @@ module.exports = {
     rules: {
         'prettier/prettier': 'error',
         '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-namespace': 'off',
+        'import/prefer-default-export': 'off',
+        'import/extensions': [ 'error', { '.ts': 'never', '.vue': 'always' } ],
         curly: 'error',
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    },
+    'settings': {
+        'import/resolver': {
+            'node': {
+                'extensions': [ '.js', '.jsx', '.ts', '.tsx' ],
+            },
+        },
     },
     globals: {
         defineProps: 'readonly',

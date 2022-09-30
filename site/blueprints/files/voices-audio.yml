@@ -2,3 +2,12 @@ title: Voice Audio
 
 accept:
   extension: mp3
+
+fields:
+  language:
+    label: Language of the audio
+    type: text
+  countryFlag:
+    label: Language Country Flag
+    type: files
+    multiple: false
