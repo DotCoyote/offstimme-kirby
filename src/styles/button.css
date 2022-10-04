@@ -1,0 +1,4 @@
+.btn {
+    @apply bg-primary hover:bg-primary-600;
+    padding: 0.3rem 1rem;
+}

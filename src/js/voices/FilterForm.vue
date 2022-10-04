@@ -150,7 +150,7 @@ watch(
     </div>
     <div></div>
     <div class="flex flex-row-reverse">
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn--primary">Submit</button>
     </div>
   </form>
 </template>

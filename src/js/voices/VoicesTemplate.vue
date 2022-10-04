@@ -1,16 +1,19 @@
 <script lang="ts" setup>
-import { defineAsyncComponent, onMounted, reactive, ref } from 'vue';
+import { computed, defineAsyncComponent, onMounted, ref } from 'vue';
 import { Voice } from './typings/voice.types';
 import FilterForm from './FilterForm.vue';
 import { SelectedFilters } from './typings/filterForm.types';
 import { Pagination } from './typings/pagination.types';
+import { ENotificationType } from '../shared/Notification/notification.types';
 
-const SvgIcon = defineAsyncComponent(() => import('../SvgIcon/SvgIcon.vue'));
+const SvgIcon = defineAsyncComponent(() => import('../shared/SvgIcon/SvgIcon.vue'));
+const Notification = defineAsyncComponent(() => import('../shared/Notification/NotificationComponent.vue'));
 const VoiceActor = defineAsyncComponent(() => import('./VoiceActor.vue'));
 const VoicePagination = defineAsyncComponent(() => import('./VoicePagination.vue'));
 
 const isLoading = ref(false);
-const voices = ref<Voice.BASE[]>();
+const error = ref<string>();
+const voices = ref<Voice.BASE[]>([]);
 const voicePaginationData = ref<Pagination>({
   total: 0,
   limit: 0,
@@ -23,7 +26,7 @@ interface PostParams {
   filterBy?: unknown[];
 }
 
-const selectedFilters = reactive<SelectedFilters>({
+const selectedFilters = ref<SelectedFilters>({
   voiceAge: null,
   voiceStyle: null,
   gender: null,
@@ -32,25 +35,40 @@ const selectedFilters = reactive<SelectedFilters>({
 });
 
 async function requestVoices(newPage = 1) {
-  const limit = 3;
+  const limit = 16;
   try {
     isLoading.value = true;
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', String(newPage));
+    window.history.pushState({ path: String(url) }, '', url);
+
     const postParams: PostParams = {
-      search: selectedFilters?.searchText || '',
+      search: selectedFilters.value.searchText || '',
       filterBy: [],
     };
 
-    if (selectedFilters?.voiceAge && postParams.filterBy) {
+    if (!postParams.filterBy) {
+      return;
+    }
+    if (selectedFilters.value.voiceAge) {
       postParams.filterBy.push({
         field: 'voiceAge',
-        value: [selectedFilters.voiceAge],
+        value: [selectedFilters.value.voiceAge],
         operator: 'in',
       });
     }
-    if (selectedFilters?.voiceStyle && postParams.filterBy) {
+    if (selectedFilters.value.gender) {
+      postParams.filterBy.push({
+        field: 'gender',
+        value: [selectedFilters.value.gender],
+        operator: 'in',
+      });
+    }
+    if (selectedFilters.value.voiceStyle) {
       postParams.filterBy.push({
         field: 'voiceStyle',
-        value: [selectedFilters.voiceStyle],
+        value: [selectedFilters.value.voiceStyle],
         operator: 'in',
       });
     }
@@ -66,11 +84,14 @@ async function requestVoices(newPage = 1) {
         },
       },
     );
+    if (response.status >= 400 && response.status < 600) {
+      throw response.statusText;
+    }
     const responseJson = await response.json();
     voices.value = responseJson.data as Voice.BASE[];
     voicePaginationData.value = responseJson.pagination as Pagination;
-  } catch (e) {
-    console.error(e);
+  } catch (e: unknown) {
+    error.value = e as string;
   } finally {
     isLoading.value = false;
   }
@@ -83,6 +104,8 @@ onMounted(() => {
 async function onPageChange(newPage: number) {
   await requestVoices(newPage);
 }
+
+const itemsOnPage = computed(() => voices.value.length || 0);
 </script>
 
 <template>
@@ -95,16 +118,21 @@ async function onPageChange(newPage: number) {
       >
         <svg-icon name="loading" class="animate-spin w-12 h-12" />
       </div>
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        <voice-actor v-for="voice in voices" :key="voice.content.uuid" :actor="voice" />
-      </div>
+
+      <notification v-if="error" :type="ENotificationType.DANGER" class="my-6 mx-auto max-w-2xl"
+        >{{ error }}
+      </notification>
 
       <voice-pagination
-        v-if="voicePaginationData.total > voicePaginationData.limit"
+        v-if="voicePaginationData"
         :pagination="voicePaginationData"
+        :items-on-page="itemsOnPage"
         class="mt-4"
         @page-change="onPageChange"
       />
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <voice-actor v-for="voice in voices" :key="voice.content.uuid" :actor="voice" />
+      </div>
     </div>
   </div>
 </template>
