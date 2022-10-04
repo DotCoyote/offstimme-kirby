@@ -1,6 +1,15 @@
-<?php /** @var Kirby\Cms\Pages $pages */ ?>
-<?php /** @var Kirby\Cms\Page $page */ ?>
-<?php /** @var Kirby\Cms\Site $site */ ?>
+<?php
+/** @var Kirby\Cms\Pages $pages */
+?>
+<?php
+/** @var Kirby\Cms\Page $page */
+?>
+<?php
+/** @var Kirby\Cms\Site $site */
+?>
+<?php
+/** @var Kirby\Cms\App $kirby */
+?>
 
 <footer>
     <section class="footer-top bg-gray-800 flex justify-center pt-12">
@@ -10,7 +19,7 @@
                     <li>
                         <a href="<?= $socialLink->url() ?>" target="_blank"
                            class="bg-gray-900 text-gray-700 hover:bg-primary transition-colors duration-200 flex justify-center items-center w-20 h-20"
-                           rel="nofollow"><?= $socialLink->iconName(); ?></a>
+                           rel="nofollow"><?= $socialLink->iconName() ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -27,15 +36,16 @@
                             <?= html($subpage->title()) ?>
                         </a>
                     </li>
-                <?php endforeach ?>
+                <?php endforeach; ?>
             </ul>
         </nav>
-        <p class="uppercase mt-2">&copy; 2008-<?= date("Y") ?> Peter Seaton-Clark. All rights reserved.</p>
+        <p class="uppercase mt-2">&copy; 2008-<?= date('Y') ?> Peter Seaton-Clark. All rights reserved.</p>
     </section>
 </footer>
 
 <script>
     window.csrf = "<?= csrf() ?>";
+    window.lang = "<?= $kirby->language() ?>";
 </script>
 <?= vite()->js() ?>
 </body>

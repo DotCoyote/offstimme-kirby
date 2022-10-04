@@ -47,9 +47,21 @@ function toggleVisibleDataIndex(fileId: string) {
       </div>
     </div>
     <div class="block bg-gray-700">
-      {{ actor.content.title }}
-      {{ actor.content.voiceage[0] }}
-      <figure v-if="visibleDataSet" class="p-2 flex flex-row items-center justify-center">
+      <div class="flex flex-row">
+        <div class="w-20 h-20">
+          <img
+            v-if="actor.content.image.length"
+            :src="actor.content.image[0].url"
+            class="w-full h-full object-cover"
+            alt=""
+          />
+        </div>
+        <div class="ml-4 pt-2 leading-tight">
+          <h3>{{ actor.content.title }}</h3>
+          <span class="text-sm">{{ actor.content.country }}</span>
+        </div>
+      </div>
+      <figure v-if="visibleDataSet" class="p-2 mt-4 flex flex-row items-center justify-center">
         <audio controls :src="visibleDataSet.audio"></audio>
       </figure>
     </div>
