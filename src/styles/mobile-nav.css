@@ -1,0 +1,19 @@
+body.js-nav-open {
+    overflow: hidden;
+}
+
+.mobile-nav {
+    @apply bg-gray-900;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    transition: transform 250ms ease-in-out;
+    transform: translateX(100%);
+}
+
+body.js-nav-open .mobile-nav {
+    transform: translateX(0%);
+}

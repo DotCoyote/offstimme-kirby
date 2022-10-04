@@ -18,7 +18,7 @@
                 <?php foreach ($site->socialLinks()->toStructure() as $socialLink): ?>
                     <li>
                         <a href="<?= $socialLink->url() ?>" target="_blank"
-                           class="bg-gray-900 text-gray-700 hover:bg-primary transition-colors duration-200 flex justify-center items-center w-20 h-20"
+                           class="bg-gray-900 text-gray-700 hover:bg-primary transition-colors duration-200 flex justify-center items-center w-16 h-16 lg:w-20 lg:h-20"
                            rel="nofollow"><?= $socialLink->iconName() ?></a>
                     </li>
                 <?php endforeach; ?>
@@ -26,7 +26,6 @@
         </nav>
     </section>
     <section class="footer-bottom bg-gray-900 text-gray-400 text-center p-4 text-xs mt-12">
-
         <nav>
             <ul class="flex flex-row items-center justify-center">
                 <?php foreach ($pages->find('legal-info', 'privacy-policy') as $subpage): ?>
