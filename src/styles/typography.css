@@ -3,6 +3,10 @@ body {
     font-size: var(--base-font-size);
 }
 
+#main {
+    @apply text-gray-300;
+}
+
 h1, h2, h3, h4, h5, h6 {
     @apply text-white;
 }
@@ -13,4 +17,16 @@ h1 {
 
 h2 {
     @apply text-2xl;
+}
+
+h3 {
+    @apply text-xl;
+}
+
+h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
+    margin-top: 2rem;
+}
+
+p + * {
+    margin-top: 1.5em;
 }

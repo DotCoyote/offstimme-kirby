@@ -61,9 +61,16 @@ function toggleVisibleDataIndex(fileId: string) {
           <span class="text-sm">{{ actor.content.country }}</span>
         </div>
       </div>
-      <figure v-if="visibleDataSet" class="p-2 mt-4 flex flex-row items-center justify-center">
-        <audio controls :src="visibleDataSet.audio"></audio>
+      <figure v-if="visibleDataSet" class="p-2 mt-4 w-full">
+        <audio controls :src="visibleDataSet.audio" class="w-full">
+          <p>
+            Your browser does not support HTML audio, but you can still
+            <a :href="visibleDataSet.audio">download the music</a>.
+          </p>
+        </audio>
       </figure>
+
+      <div class="flex flex-row-reverse p-2"><a href="" class="btn btn--primary">Request</a></div>
     </div>
   </div>
 </template>

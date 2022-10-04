@@ -1,0 +1,9 @@
+title: Text section
+icon: text
+
+fields:
+  headline:
+    type: text
+  text:
+    type: textarea
+    required: true
