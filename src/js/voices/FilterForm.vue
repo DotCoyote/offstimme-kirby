@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 import { SelectedFilters } from './typings/filterForm.types';
 
-defineEmits<{
-  (e: 'form-submit', data: SelectedFilters): void;
+const $emit = defineEmits<{
+  (e: 'update:modelValue', data: SelectedFilters): void;
+  (e: 'form-submit', data: void): void;
 }>();
 
 const selectedFilters = reactive<SelectedFilters>({
@@ -60,14 +61,20 @@ const genderOptions = [
 ];
 
 const languageOptions = [];
+
+watch(
+  () => selectedFilters,
+  (newVal) => {
+    $emit('update:modelValue', newVal);
+  },
+  {
+    deep: true,
+  },
+);
 </script>
 
 <template>
-  <form
-    action=""
-    class="mt-4 grid lg:grid-cols-2 gap-4 max-w-[40rem] mx-auto"
-    @submit.prevent="$emit('form-submit', selectedFilters)"
-  >
+  <form action="" class="mt-4 grid lg:grid-cols-2 gap-4 max-w-[40rem] mx-auto" @submit.prevent="$emit('form-submit')">
     <h2 class="col-span-2">Have a look at our database</h2>
     <div>
       <input

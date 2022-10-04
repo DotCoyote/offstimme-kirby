@@ -5,12 +5,20 @@ const props = defineProps<{
   pagination: { page: number; total: number; offset: number; limit: number };
 }>();
 
+const $emit = defineEmits<{
+  (e: 'page-change', data: number): void;
+}>();
+
 const pages = computed(() => Math.ceil(props.pagination.total / props.pagination.limit));
 const pageUrl = computed(() => (pageNum: number) => {
   const url = new URL(window.location.href);
   url.searchParams.set('page', String(pageNum));
   return url;
 });
+
+function onLinkClick(page: number) {
+  $emit('page-change', page);
+}
 </script>
 
 <template>
@@ -23,10 +31,9 @@ const pageUrl = computed(() => (pageNum: number) => {
       :class="{
         'bg-primary': page === pagination.page,
       }"
+      @click.prevent="onLinkClick(page)"
     >
       {{ page }}
     </a>
   </div>
 </template>
-
-<style scoped lang="scss"></style>
