@@ -29,3 +29,5 @@ site/plugins/*
 !/storage/sessions/.gitkeep
 
 /site/config/.license
+
+.idea
