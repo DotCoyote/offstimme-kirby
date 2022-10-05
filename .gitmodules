@@ -1,0 +1,6 @@
+[submodule "offstimme-kirby-content"]
+	path = offstimme-kirby-content
+	url = git@github.com:DotCoyote/offstimme-kirby-content.git
+[submodule "content"]
+	path = content
+	url = git@github.com:DotCoyote/offstimme-kirby-content.git
