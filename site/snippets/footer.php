@@ -19,7 +19,7 @@
                     <li>
                         <a href="<?= $socialLink->url() ?>" target="_blank"
                            class="bg-gray-900 text-gray-700 hover:bg-primary transition-colors duration-200 flex justify-center items-center w-16 h-16 lg:w-20 lg:h-20"
-                           rel="nofollow"><?= $socialLink->iconName() ?></a>
+                           rel="nofollow"><?= svg('src/assets/icons/' . $socialLink->iconName() . '.svg') ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>
