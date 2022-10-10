@@ -23,9 +23,9 @@ if ($items->isNotEmpty()): ?>
                     <?php foreach ($items as $item): ?>
                         <li class="h-full"><a
                                 class="<?php e(
-                                  $item->isOpen(),
-                                  ' active font-bold text-white',
-                                  'font-light text-gray-200'
+                                    $item->isOpen(),
+                                    ' active font-bold text-white',
+                                    'font-light text-gray-200'
                                 ); ?> h-full px-4 flex justify-center items-center leading-none uppercase tracking-wide hover:text-primary transition-colors duration-200"
                                 href="<?= $item->url() ?>"><span><?= $item->title()->html() ?></span></a></li>
                     <?php endforeach; ?>
@@ -49,23 +49,23 @@ if ($items->isNotEmpty()): ?>
                 </ul>
             </nav>
 
-            <div class="js-mobile-nav ml-4">
+            <div class="js-mobile-nav md:hidden ml-4">
                 <button class="js-nav-toggle-button p-2">
                     <?= svg('src/assets/icons/menu.svg') ?>
                 </button>
                 <nav class="mobile-nav hidden js-mobile-nav-container">
                     <button
                         class="js-nav-toggle-button absolute top-0 right-0 p-5"><?= svg(
-                          'src/assets/icons/close.svg'
+                            'src/assets/icons/close.svg'
                         ) ?></button>
                     <nav class="pt-16">
                         <ul class="border-b border-solid border-gray-700">
                             <?php foreach ($items as $item): ?>
                                 <li class="h-full"><a
                                         class="<?php e(
-                                          $item->isOpen(),
-                                          ' active font-bold text-white',
-                                          'font-light text-gray-200'
+                                            $item->isOpen(),
+                                            ' active font-bold text-white',
+                                            'font-light text-gray-200'
                                         ); ?> h-full px-4 leading-none uppercase tracking-wide hover:text-primary transition-colors duration-200 p-4 border-t border-solid border-gray-700 text-lg block"
                                         href="<?= $item->url() ?>"><span><?= $item->title()->html() ?></span></a></li>
                             <?php endforeach; ?>
@@ -77,4 +77,4 @@ if ($items->isNotEmpty()): ?>
         </div>
     </div>
 <?php endif;
- ?>
+?>

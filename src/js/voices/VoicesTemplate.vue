@@ -5,6 +5,8 @@ import FilterForm from './FilterForm.vue';
 import { SelectedFilters } from './typings/filterForm.types';
 import { Pagination } from './typings/pagination.types';
 import { ENotificationType } from '../shared/Notification/notification.types';
+import { useVoiceActorLanguages } from './useVoiceActorLanguages';
+import { Language } from './typings/language.types';
 
 const SvgIcon = defineAsyncComponent(() => import('../shared/SvgIcon/SvgIcon.vue'));
 const Notification = defineAsyncComponent(() => import('../shared/Notification/NotificationComponent.vue'));
@@ -14,6 +16,8 @@ const VoicePagination = defineAsyncComponent(() => import('./VoicePagination.vue
 const isLoading = ref(false);
 const error = ref<string>();
 const voices = ref<Voice.BASE[]>([]);
+const languages = ref<Language[]>([]);
+
 const voicePaginationData = ref<Pagination>({
   total: 0,
   limit: 0,
@@ -97,8 +101,14 @@ async function requestVoices(newPage = 1) {
   }
 }
 
+async function requestVoiceActorLangs() {
+  const { fetchVoiceActorLanguages } = useVoiceActorLanguages();
+  languages.value = await fetchVoiceActorLanguages();
+}
+
 onMounted(() => {
   requestVoices();
+  requestVoiceActorLangs();
 });
 
 async function onPageChange(newPage: number) {
@@ -110,13 +120,13 @@ const itemsOnPage = computed(() => voices.value.length || 0);
 
 <template>
   <div class="container px-4">
-    <filter-form v-model="selectedFilters" @form-submit="requestVoices" />
+    <filter-form v-model="selectedFilters" :languages="languages" @form-submit="requestVoices" />
     <div class="relative">
       <div
         v-show="isLoading"
         class="absolute inset-0 flex text-primary justify-center p-8 z-10 bg-gray-900 bg-opacity-75 items-center"
       >
-        <svg-icon name="loading" class="animate-spin w-12 h-12" />
+        <svg-icon class="animate-spin w-12 h-12" name="loading" />
       </div>
 
       <notification v-if="error" :type="ENotificationType.DANGER" class="my-6 mx-auto max-w-2xl"
@@ -125,8 +135,8 @@ const itemsOnPage = computed(() => voices.value.length || 0);
 
       <voice-pagination
         v-if="voicePaginationData"
-        :pagination="voicePaginationData"
         :items-on-page="itemsOnPage"
+        :pagination="voicePaginationData"
         class="mt-4"
         @page-change="onPageChange"
       />
@@ -137,4 +147,4 @@ const itemsOnPage = computed(() => voices.value.length || 0);
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>
