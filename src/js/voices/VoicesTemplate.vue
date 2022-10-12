@@ -2,11 +2,10 @@
 import { computed, defineAsyncComponent, onMounted, ref } from 'vue';
 import { Voice } from './typings/voice.types';
 import FilterForm from './FilterForm.vue';
-import { SelectedFilters } from './typings/filterForm.types';
 import { Pagination } from './typings/pagination.types';
 import { ENotificationType } from '../shared/Notification/notification.types';
-import { useVoiceActorLanguages } from './useVoiceActorLanguages';
 import { Language } from './typings/language.types';
+import { useVoiceFilterOptions } from '../shared/composables/useVoiceFilterOptions';
 
 const SvgIcon = defineAsyncComponent(() => import('../shared/SvgIcon/SvgIcon.vue'));
 const Notification = defineAsyncComponent(() => import('../shared/Notification/NotificationComponent.vue'));
@@ -30,17 +29,12 @@ interface PostParams {
   filterBy?: unknown[];
 }
 
-const selectedFilters = ref<SelectedFilters>({
-  voiceAge: null,
-  voiceStyle: null,
-  gender: null,
-  language: null,
-  searchText: '',
-});
+const { selectedFilters, mapUrlParams } = useVoiceFilterOptions();
 
 async function requestVoices(newPage = 1) {
   const limit = 16;
   try {
+    error.value = '';
     isLoading.value = true;
 
     const url = new URL(window.location.href);
@@ -48,31 +42,38 @@ async function requestVoices(newPage = 1) {
     window.history.pushState({ path: String(url) }, '', url);
 
     const postParams: PostParams = {
-      search: selectedFilters.value.searchText || '',
+      search: selectedFilters.searchText || '',
       filterBy: [],
     };
 
     if (!postParams.filterBy) {
       return;
     }
-    if (selectedFilters.value.voiceAge) {
+    if (selectedFilters.voiceAge) {
       postParams.filterBy.push({
         field: 'voiceAge',
-        value: [selectedFilters.value.voiceAge],
+        value: [selectedFilters.voiceAge],
         operator: 'in',
       });
     }
-    if (selectedFilters.value.gender) {
+    if (selectedFilters.language) {
+      postParams.filterBy.push({
+        field: 'language',
+        value: [selectedFilters.language],
+        operator: 'in',
+      });
+    }
+    if (selectedFilters.gender) {
       postParams.filterBy.push({
         field: 'gender',
-        value: [selectedFilters.value.gender],
+        value: [selectedFilters.gender],
         operator: 'in',
       });
     }
-    if (selectedFilters.value.voiceStyle) {
+    if (selectedFilters.voiceStyle) {
       postParams.filterBy.push({
         field: 'voiceStyle',
-        value: [selectedFilters.value.voiceStyle],
+        value: [selectedFilters.voiceStyle],
         operator: 'in',
       });
     }
@@ -101,14 +102,9 @@ async function requestVoices(newPage = 1) {
   }
 }
 
-async function requestVoiceActorLangs() {
-  const { fetchVoiceActorLanguages } = useVoiceActorLanguages();
-  languages.value = await fetchVoiceActorLanguages();
-}
-
 onMounted(() => {
+  mapUrlParams();
   requestVoices();
-  requestVoiceActorLangs();
 });
 
 async function onPageChange(newPage: number) {

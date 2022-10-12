@@ -13,9 +13,16 @@ $items = $pages->listed();
 if ($items->isNotEmpty()): ?>
     <div
         class="js-sticky-nav sticky top-0 z-20 bg-gray-900 h-16 w-full text-white px-4 flex flex-row justify-between items-center">
-        <a href="<?= $site->url() ?>" class="text-white block w-12 h-12 [&>*]:w-full [&>*]:h-full">
-            <?= svg('src/assets/icons/logo_icon.svg') ?>
-        </a>
+        <div class="flex flex-row items-center">
+
+            <a href="<?= $site->url() ?>" class="text-white block w-12 h-12 [&>*]:w-full [&>*]:h-full">
+                <?= svg('src/assets/icons/logo_icon.svg') ?>
+            </a>
+
+            <div class="js-voice-quick-search ml-4">
+                <voice-actor-quick-search></voice-actor-quick-search>
+            </div>
+        </div>
 
         <div class="flex flex-row h-full items-center">
             <nav class="main-nav hidden md:block">

@@ -11,5 +11,6 @@ declare global {
   interface Window {
     csrf: string;
     lang: string;
+    voiceActorsUrl: string;
   }
 }

@@ -31,3 +31,6 @@ site/plugins/*
 /site/config/.license
 
 .idea
+
+/src/locales/*.json
+/src/locales/*.ts

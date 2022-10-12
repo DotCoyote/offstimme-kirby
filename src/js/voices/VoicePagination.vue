@@ -28,23 +28,30 @@ const hasNextPage = computed(() => props.pagination.page < Math.ceil(props.pagin
 const prevPageUrl = computed(() => pageUrl.value(prevPageNum.value));
 const nextPageUrl = computed(() => pageUrl.value(props.pagination.page + 1));
 
-const results = computed(() => ({
-  start: (props.pagination.page - 1) * props.pagination.limit + 1,
-  end: hasNextPage.value
-    ? props.pagination.page * props.pagination.limit
-    : props.pagination.limit * (props.pagination.page - 1) + props.itemsOnPage,
-}));
+const results = computed(() =>
+  props.pagination.total > 0
+    ? {
+        start: (props.pagination.page - 1) * props.pagination.limit + 1,
+        end: hasNextPage.value
+          ? props.pagination.page * props.pagination.limit
+          : props.pagination.limit * (props.pagination.page - 1) + props.itemsOnPage,
+      }
+    : {
+        start: 0,
+        end: 0,
+      },
+);
 </script>
 
 <template>
   <div class="flex flex-row justify-between">
     <div class="pagination flex flex-row gap-2">
       <a
-        :href="prevPageUrl"
-        class="block py-1 px-2 text-sm bg-gray-900"
         :class="{
           'opacity-50 cursor-not-allowed': !hasPrevPage,
         }"
+        :href="prevPageUrl"
+        class="block py-1 px-2 text-sm bg-gray-900"
         @click.prevent="hasPrevPage && onLinkClick(prevPageNum)"
       >
         &lt;
@@ -52,22 +59,22 @@ const results = computed(() => ({
       <a
         v-for="page in pages"
         :key="page"
-        :href="pageUrl(page)"
-        class="block py-1 px-2 text-sm"
         :class="{
           'bg-primary': page === pagination.page,
           'bg-gray-900': page !== pagination.page,
         }"
+        :href="pageUrl(page)"
+        class="block py-1 px-2 text-sm"
         @click.prevent="page !== pagination.page && onLinkClick(page)"
       >
         {{ page }}
       </a>
       <a
-        :href="nextPageUrl"
-        class="block py-1 px-2 text-sm bg-gray-900"
         :class="{
           'opacity-50 cursor-not-allowed': !hasNextPage,
         }"
+        :href="nextPageUrl"
+        class="block py-1 px-2 text-sm bg-gray-900"
         @click.prevent="hasNextPage && onLinkClick(nextPageNum)"
       >
         &gt;

@@ -56,4 +56,10 @@ If you have ssh access you can use rsync to automate the upload/sync.
 
 ### Git
 
-You can also deploy your repository with git. Then you have to run the [installation](#installation) steps again on your web server.
+You can also deploy your repository with git. Then you have to run the [installation](#installation) steps again on your
+web server.
+
+## Translations
+
+To manage translations, edit google
+sheet: https://docs.google.com/spreadsheets/d/1nSQqjMBcxWUTb5fOHKDyp3whvC6IL3k2Do0OKGzU51Q

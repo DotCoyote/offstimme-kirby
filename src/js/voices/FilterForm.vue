@@ -1,69 +1,15 @@
 <script lang="ts" setup>
-import { reactive, watch } from 'vue';
+import { onMounted, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { SelectedFilters } from './typings/filterForm.types';
-import { Language } from './typings/language.types';
+import { languageOptions, useVoiceFilterOptions } from '../shared/composables/useVoiceFilterOptions';
 
 const $emit = defineEmits<{
   (e: 'update:modelValue', data: SelectedFilters): void;
   (e: 'form-submit', data: void): void;
 }>();
 
-const props = defineProps<{
-  languages: Language[];
-}>();
-
-const selectedFilters = reactive<SelectedFilters>({
-  voiceAge: null,
-  voiceStyle: null,
-  gender: null,
-  language: null,
-  searchText: '',
-});
-
-const voiceAgeOptions = [
-  {
-    label: 'Adult',
-    value: 'adult',
-  },
-  {
-    label: 'Mature',
-    value: 'mature',
-  },
-  {
-    label: 'Young Adult',
-    value: 'youngAdult',
-  },
-];
-
-const voiceStyleOptions = [
-  {
-    label: 'Deep',
-    value: 'deep',
-  },
-  {
-    label: 'Middle',
-    value: 'middle',
-  },
-  {
-    label: 'Light',
-    value: 'light',
-  },
-];
-
-const genderOptions = [
-  {
-    label: 'Female',
-    value: 'female',
-  },
-  {
-    label: 'Male',
-    value: 'male',
-  },
-  {
-    label: 'Diverse',
-    value: 'diverse',
-  },
-];
+const { genderOptions, voiceStyleOptions, voiceAgeOptions, selectedFilters, mapUrlParams } = useVoiceFilterOptions();
 
 watch(
   () => selectedFilters,
@@ -74,14 +20,22 @@ watch(
     deep: true,
   },
 );
+
+const { t } = useI18n();
+
+onMounted(() => {
+  mapUrlParams();
+});
 </script>
 
 <template>
   <form action="" class="mt-4 grid lg:grid-cols-2 gap-4 max-w-[40rem] mx-auto" @submit.prevent="$emit('form-submit')">
-    <h2 class="col-span-2">Have a look at our database</h2>
+    <h2 class="col-span-2">{{ t('voiceActors.filterHeadline') }}</h2>
 
     <div>
-      <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="search-name"> Name </label>
+      <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="search-name">
+        {{ t('voiceActors.name') }}
+      </label>
       <input
         id="search-name"
         v-model="selectedFilters.searchText"
@@ -94,7 +48,7 @@ watch(
 
     <div>
       <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="search-language">
-        Language
+        {{ t('voiceActors.language') }}
       </label>
       <div class="relative">
         <select
@@ -104,7 +58,7 @@ watch(
         >
           <option :selected="selectedFilters.language === null" :value="null">-</option>
           <option
-            v-for="language in languages"
+            v-for="language in languageOptions"
             :key="language.id"
             :selected="selectedFilters.language === language.id"
             :value="language.id"
@@ -122,7 +76,7 @@ watch(
 
     <div>
       <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="search-gender">
-        Gender
+        {{ t('voiceActors.gender') }}
       </label>
       <div class="relative">
         <select
@@ -150,7 +104,7 @@ watch(
 
     <div>
       <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="search-voice-age">
-        Voice Age
+        {{ t('voiceActors.voiceAge') }}
       </label>
       <div class="relative">
         <select
@@ -178,7 +132,7 @@ watch(
 
     <div>
       <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="search-voice-style">
-        Voice Style
+        {{ t('voiceActors.voiceStyle') }}
       </label>
       <div class="relative">
         <select
@@ -206,9 +160,9 @@ watch(
 
     <div></div>
     <div class="flex flex-row-reverse">
-      <button class="btn btn--primary" type="submit">Submit</button>
+      <button class="btn btn--primary" type="submit">
+        {{ t('voiceActors.submit') }}
+      </button>
     </div>
   </form>
 </template>
-
-<style lang="scss" scoped></style>

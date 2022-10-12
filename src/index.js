@@ -10,3 +10,6 @@ if (document.querySelector('.js-voices-component')) {
 if (document.querySelector('.js-mobile-nav')) {
   import('./js/mobile-nav/index');
 }
+if (document.querySelector('.js-voice-quick-search')) {
+  import('./js/quick-search/index');
+}
