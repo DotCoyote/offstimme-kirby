@@ -16,10 +16,12 @@ if ($items->isNotEmpty()): ?>
         <div class="flex flex-row items-center">
 
             <a href="<?= $site->url() ?>" class="text-white block w-12 h-12 [&>*]:w-full [&>*]:h-full">
-                <?= svg('src/assets/icons/logo_icon.svg') ?>
+                <svg class="icon">
+                    <use xlink:href="#icon-logo_icon"/>
+                </svg>
             </a>
 
-            <div class="js-voice-quick-search ml-4">
+            <div class="js-voice-quick-search ml-4 hidden md:block">
                 <voice-actor-quick-search></voice-actor-quick-search>
             </div>
         </div>
@@ -47,8 +49,9 @@ if ($items->isNotEmpty()): ?>
                                 <a href="<?= $page->url($language->code()) ?>"
                                    hreflang="<?php echo $language->code(); ?>"
                                    title="<?php echo html($language->name()); ?>">
-                                    <?= svg('src/assets/icons/flag_' . $language->code() . '.svg') ?>
-
+                                    <svg class="icon w-7 h-5 block">
+                                        <use xlink:href="#icon-flag_<?= $language->code(); ?>"/>
+                                    </svg>
                                 </a>
                             </li>
                         <?php endif; ?>
@@ -58,13 +61,18 @@ if ($items->isNotEmpty()): ?>
 
             <div class="js-mobile-nav md:hidden ml-4">
                 <button class="js-nav-toggle-button p-2">
-                    <?= svg('src/assets/icons/menu.svg') ?>
+                    <svg class="icon w-6 h-6">
+                        <use xlink:href="#icon-menu"/>
+                    </svg>
                 </button>
                 <nav class="mobile-nav hidden js-mobile-nav-container">
                     <button
-                        class="js-nav-toggle-button absolute top-0 right-0 p-5"><?= svg(
-                            'src/assets/icons/close.svg'
-                        ) ?></button>
+                        class="js-nav-toggle-button absolute top-0 right-0 p-5">
+
+                        <svg class="icon w-6 h-6">
+                            <use xlink:href="#icon-close"/>
+                        </svg>
+                    </button>
                     <nav class="pt-16">
                         <ul class="border-b border-solid border-gray-700">
                             <?php foreach ($items as $item): ?>

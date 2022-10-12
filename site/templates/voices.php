@@ -11,7 +11,9 @@
 
 <div class="js-voices-component">
     <div class="flex text-primary justify-center p-8 [&>*]:animate-spin [&>*]:w-12 [&>*]:h-12">
-        <?= svg('src/assets/icons/loading.svg') ?>
+        <svg class="icon w-8 h-8">
+            <use xlink:href="#icon-loading"/>
+        </svg>
     </div>
 </div>
 

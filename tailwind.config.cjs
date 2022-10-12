@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [ './site/**/*.php', './src/**/*.{html,vue}' ],
+    content: [ './site/**/*.php', './site/snippets/*.php', './src/**/*.{html,vue}' ],
     corePlugins: {
         container: true,
     },
