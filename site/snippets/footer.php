@@ -1,13 +1,7 @@
 <?php
 /** @var Kirby\Cms\Pages $pages */
-?>
-<?php
 /** @var Kirby\Cms\Page $page */
-?>
-<?php
 /** @var Kirby\Cms\Site $site */
-?>
-<?php
 /** @var Kirby\Cms\App $kirby */
 ?>
 

@@ -34,3 +34,6 @@ site/plugins/*
 
 /src/locales/*.json
 /src/locales/*.ts
+
+.env
+!.env.dist

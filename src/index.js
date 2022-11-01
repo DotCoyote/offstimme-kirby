@@ -1,3 +1,4 @@
+import '@fontsource/titillium-web';
 import './index.css';
 import './js/scrollTo';
 // eslint-disable-next-line import/no-unresolved

@@ -1,16 +1,17 @@
 {
-  "name": "arnoson/kirby-vite-basic-kit",
-  "description": "A simple Kirby CMS + Vite starter kit",
-  "type": "project",
-  "license": "MIT",
-  "require": {
-    "getkirby/cms": "^3.6",
-    "arnoson/kirby-vite": "^3.0"
-  },
-  "config": {
-    "allow-plugins": {
-      "getkirby/composer-installer": true
-    }
-  },
-  "minimum-stability": "RC"
+    "name": "arnoson/kirby-vite-basic-kit",
+    "description": "A simple Kirby CMS + Vite starter kit",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "getkirby/cms": "^3.6",
+        "arnoson/kirby-vite": "^3.0",
+        "beebmx/kirby-env": "^4.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        }
+    },
+    "minimum-stability": "RC"
 }

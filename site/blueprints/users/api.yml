@@ -1,0 +1,19 @@
+title: API-User
+permissions:
+  access:
+    *: false
+    panel: true
+    site: true
+  files:
+    *: false
+    read: true
+  languages:
+    *: false
+  pages:
+    *: false
+    read: true
+  user:
+    *: false
+  users:
+    *: false
+
