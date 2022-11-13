@@ -1,0 +1,24 @@
+title: Text section with sidebar gallery
+icon: text
+
+columns:
+  main:
+    width: 2/3
+    fields:
+      headline:
+        type: text
+      text:
+        type: textarea
+        required: true
+
+
+  sidebar:
+    width: 1/3
+    fields:
+      images:
+        label: Image gallery
+        type: files
+        multiple: true
+        accept:
+          mime: image/*
+          type: image

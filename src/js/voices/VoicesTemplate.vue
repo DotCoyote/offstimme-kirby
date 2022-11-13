@@ -79,7 +79,7 @@ async function requestVoices(newPage = 1) {
     }
 
     const response = await fetch(
-      `/api/pages/voices/children/search?select=content,files&limit=${limit}&page=${newPage}`,
+      `/api/pages/stimmen/children/search?select=content,files&limit=${limit}&page=${newPage}`,
       {
         method: 'POST',
         body: JSON.stringify(postParams),

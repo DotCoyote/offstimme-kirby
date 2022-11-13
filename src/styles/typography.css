@@ -30,3 +30,23 @@ h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
 p + * {
     margin-top: 1.5em;
 }
+
+#main ul, #main ol {
+    padding-left: 1.5em;
+}
+
+#main ol {
+    list-style-type: decimal;
+}
+
+#main ul {
+    list-style-type: disc;
+}
+
+#main ul + *, #main ol + * {
+    margin-top: 1.5em;
+}
+
+#main ul li + *, #main ol li + * {
+    margin-top: 0.25em;
+}

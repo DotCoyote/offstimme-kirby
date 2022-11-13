@@ -12,4 +12,5 @@ sections:
       - pager-headline
       - pager-hero
       - pager-text
+      - pager-text-sidebar
       - pager-video
