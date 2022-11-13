@@ -23,29 +23,6 @@ columns:
           female: Female
           male: Male
           diverse: Diverse
-      isVip:
-        width: 1/2
-        label: Is this Actor a VIP-Actor?
-        type: toggle
-        text:
-          - "no"
-          - "yes"
-      showcase:
-        width: 1/2
-        label: Show this actor in the showcase container
-        type: toggle
-        text:
-          - "no"
-          - "yes"
-      language:
-        width: 1/2
-        label: Language
-        type: select
-        options: query
-        query:
-          fetch: site.find("languages").languages.toStructure
-          text: "{{ structureItem.title }}"
-          value: "{{ structureItem.id }}"
 
 
       #          german: German
@@ -91,7 +68,7 @@ columns:
       #          germanCH: German (Swiss)
 
       country:
-        label: Country
+        label: Country (Origin)
         type: text
       voiceProbes:
         label: Voice Probes

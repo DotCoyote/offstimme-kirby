@@ -5,8 +5,13 @@ accept:
 
 fields:
   language:
-    label: Language of the audio
-    type: text
+    label: Language
+    type: select
+    options: query
+    query:
+      fetch: site.find("languages").languages.toStructure
+      text: "{{ structureItem.title }}"
+      value: "{{ structureItem.title }}"
   countryFlag:
     label: Language Country Flag
     type: files
