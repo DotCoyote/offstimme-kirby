@@ -11,18 +11,20 @@
             <h2 class="text-center"><?= $part->headline() ?></h2>
         <?php endif; ?>
 
-        <div class="grid grid-cols-4">
+        <div class="md:grid grid-cols-4 gap-4">
             <div class="col-span-3">
 
                 <?= $part->text()->kt() ?>
             </div>
             <div class="col-span-1">
-                <?php foreach ($part->images() as $image): ?>
-                    <div class="[+ *]:mt-4"
-                         style="background-image: url('<?= $image->url() ?>')">
-                        <img src="<?= $image->url() ?>"/>
-                    </div>
-                <?php endforeach; ?>
+                <div class=" grid grid-cols-1 gap-4">
+                    <?php foreach ($part->images() as $image): ?>
+                        <div class="[+ *]:mt-4"
+                             style="background-image: url('<?= $image->url() ?>')">
+                            <img src="<?= $image->url() ?>"/>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
         </div>
