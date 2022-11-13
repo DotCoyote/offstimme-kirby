@@ -17,7 +17,7 @@ onMounted(() => {
     <div class="flex flex-row gap-4">
       <div class="relative">
         <select
-          id="search-gender"
+          id="quick-search-gender"
           v-model="selectedFilters.gender"
           class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           name="voiceGender"
@@ -41,7 +41,7 @@ onMounted(() => {
 
       <div class="relative">
         <select
-          id="search-language"
+          id="quick-search-language"
           v-model="selectedFilters.language"
           class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           name="voiceLanguage"

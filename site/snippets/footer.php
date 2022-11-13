@@ -26,7 +26,7 @@
     <section class="footer-bottom bg-gray-900 text-gray-400 text-center p-4 text-xs mt-12">
         <nav>
             <ul class="flex flex-row items-center justify-center">
-                <?php foreach ($pages->find('legal-info', 'privacy-policy') as $subpage): ?>
+                <?php foreach ($pages->find('impressum', 'datenschutz') as $subpage): ?>
                     <li>
                         <a href="<?= $subpage->url() ?>"
                            class="inline-block px-2 text-primary hover:text-white uppercase">
