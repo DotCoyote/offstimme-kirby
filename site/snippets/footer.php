@@ -43,8 +43,9 @@
 <script>
     window.csrf = "<?= csrf() ?>";
     window.lang = "<?= $kirby->language() ?>";
-    window.voiceActorsUrl = "<?= $site->find('voices')->url() ?>";
+    window.voiceActorsUrl = "<?= $site->find('stimmen')->url() ?>";
 </script>
+
 <?= vite()->js() ?>
 </body>
 </html>
