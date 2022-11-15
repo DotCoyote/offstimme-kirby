@@ -4,7 +4,7 @@
 ?>
 
 <div class="h-[300px] relative">
-    <?php if ($site->heroImage()->toFile()): ?>
+    <?php if ($site->heroImage() && $site->heroImage()->toFile()): ?>
         <div class="absolute inset-0 bg-cover bg-center"
              style="background-image: url('<?= $site
                  ->heroImage()

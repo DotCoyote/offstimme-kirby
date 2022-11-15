@@ -10,7 +10,10 @@ columns:
       text:
         type: textarea
         required: true
-
+      fileGallery:
+        label: File gallery
+        type: files
+        multiple: true
 
   sidebar:
     width: 1/3

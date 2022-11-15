@@ -15,13 +15,14 @@
             <div class="col-span-3">
 
                 <?= $part->text()->kt() ?>
+
             </div>
             <div class="col-span-1">
                 <div class=" grid grid-cols-1 gap-4">
                     <?php foreach ($part->images() as $image): ?>
                         <div class="[+ *]:mt-4"
                              style="background-image: url('<?= $image->url() ?>')">
-                            <img src="<?= $image->url() ?>"/>
+                            <img src="<?= $image->url() ?>" alt=""/>
                         </div>
                     <?php endforeach; ?>
                 </div>

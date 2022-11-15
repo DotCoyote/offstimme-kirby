@@ -31,3 +31,10 @@ columns:
         multiple: false
         upload:
           accept: image/*
+
+      siteTitle:
+        type: text
+      keywords:
+        type: text
+      description:
+        type: text
