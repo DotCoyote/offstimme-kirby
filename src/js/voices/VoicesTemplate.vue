@@ -6,6 +6,7 @@ import { Pagination } from './typings/pagination.types';
 import { ENotificationType } from '../shared/Notification/notification.types';
 import { Language } from './typings/language.types';
 import { useVoiceFilterOptions } from '../shared/composables/useVoiceFilterOptions';
+import { SelectedFilters } from './typings/filterForm.types';
 
 const SvgIcon = defineAsyncComponent(() => import('../shared/SvgIcon/SvgIcon.vue'));
 const Notification = defineAsyncComponent(() => import('../shared/Notification/NotificationComponent.vue'));
@@ -29,9 +30,13 @@ interface PostParams {
   filterBy?: unknown[];
 }
 
-const { selectedFilters, mapUrlParams } = useVoiceFilterOptions();
+const { mapUrlParams, selectedFilters } = useVoiceFilterOptions();
 
-async function requestVoices(newPage = 1) {
+function onFormSubmit(selectedFiltersFromForm: SelectedFilters) {
+  requestVoices(selectedFiltersFromForm);
+}
+
+async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage = 1) {
   const limit = 16;
   try {
     error.value = '';
@@ -42,38 +47,38 @@ async function requestVoices(newPage = 1) {
     window.history.pushState({ path: String(url) }, '', url);
 
     const postParams: PostParams = {
-      search: selectedFilters.searchText || '',
+      search: selectedFiltersFromForm.searchText || '',
       filterBy: [],
     };
 
     if (!postParams.filterBy) {
       return;
     }
-    if (selectedFilters.voiceAge) {
+    if (selectedFiltersFromForm.voiceAge) {
       postParams.filterBy.push({
         field: 'voiceAge',
-        value: [selectedFilters.voiceAge],
+        value: [selectedFiltersFromForm.voiceAge],
         operator: 'in',
       });
     }
-    if (selectedFilters.language) {
+    if (selectedFiltersFromForm.language) {
       postParams.filterBy.push({
         field: 'language',
-        value: [selectedFilters.language],
+        value: [selectedFiltersFromForm.language],
         operator: 'in',
       });
     }
-    if (selectedFilters.gender) {
+    if (selectedFiltersFromForm.gender) {
       postParams.filterBy.push({
         field: 'gender',
-        value: [selectedFilters.gender],
+        value: [selectedFiltersFromForm.gender],
         operator: 'in',
       });
     }
-    if (selectedFilters.voiceStyle) {
+    if (selectedFiltersFromForm.voiceStyle) {
       postParams.filterBy.push({
         field: 'voiceStyle',
-        value: [selectedFilters.voiceStyle],
+        value: [selectedFiltersFromForm.voiceStyle],
         operator: 'in',
       });
     }
@@ -104,11 +109,11 @@ async function requestVoices(newPage = 1) {
 
 onMounted(() => {
   mapUrlParams();
-  requestVoices();
+  requestVoices(selectedFilters);
 });
 
 async function onPageChange(newPage: number) {
-  await requestVoices(newPage);
+  await requestVoices(selectedFilters, newPage);
 }
 
 const itemsOnPage = computed(() => voices.value.length || 0);
@@ -116,7 +121,7 @@ const itemsOnPage = computed(() => voices.value.length || 0);
 
 <template>
   <div class="container px-4">
-    <filter-form v-model="selectedFilters" :languages="languages" @form-submit="requestVoices" />
+    <filter-form :languages="languages" @form-submit="onFormSubmit" />
     <div class="relative">
       <div
         v-show="isLoading"

@@ -1,25 +1,14 @@
 <script lang="ts" setup>
-import { onMounted, watch } from 'vue';
+import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { SelectedFilters } from './typings/filterForm.types';
 import { languageOptions, useVoiceFilterOptions } from '../shared/composables/useVoiceFilterOptions';
 
 const $emit = defineEmits<{
-  (e: 'update:modelValue', data: SelectedFilters): void;
-  (e: 'form-submit', data: void): void;
+  (e: 'form-submit', data: SelectedFilters): void;
 }>();
 
 const { genderOptions, voiceStyleOptions, voiceAgeOptions, selectedFilters, mapUrlParams } = useVoiceFilterOptions();
-
-watch(
-  () => selectedFilters,
-  (newVal) => {
-    $emit('update:modelValue', newVal);
-  },
-  {
-    deep: true,
-  },
-);
 
 const { t } = useI18n();
 
@@ -29,7 +18,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <form action="" class="mt-4 grid lg:grid-cols-2 gap-4 max-w-[40rem] mx-auto" @submit.prevent="$emit('form-submit')">
+  <form
+    action=""
+    class="mt-4 grid lg:grid-cols-2 gap-4 max-w-[40rem] mx-auto"
+    @submit.prevent="$emit('form-submit', selectedFilters)"
+  >
     <h2 class="col-span-2">{{ t('voiceActors.filterHeadline') }}</h2>
 
     <div>
