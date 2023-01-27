@@ -3,5 +3,5 @@
 use Kirby\Cms\Site;
 
 return function (Site $site) {
-  return $site->find('voices')->children();
+    return $site->find('voices')->children();
 };

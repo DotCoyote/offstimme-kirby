@@ -12,6 +12,7 @@ vendor
 
 site/plugins/*
 !site/plugins/custom
+!site/plugins/dotcoyote-voices
 
 /public/media/*
 !/public/media/index.html
