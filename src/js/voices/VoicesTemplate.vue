@@ -79,14 +79,18 @@ async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage =
       });
     }
 
-    const response = await fetch(`/api/voices/search?select=content,files&limit=${limit}&page=${newPage}`, {
-      method: 'POST',
-      body: JSON.stringify(postParams),
-      headers: {
-        'x-csrf': window.csrf,
-        'x-language': window.lang,
+    // const response = await fetch(`/api/voices/search?select=content,files&limit=${limit}&page=${newPage}`, {
+    const response = await fetch(
+      `/api/pages/stimmen/children/search?select=content,files&limit=${limit}&page=${newPage}`,
+      {
+        method: 'POST',
+        body: JSON.stringify(postParams),
+        headers: {
+          'x-csrf': window.csrf,
+          'x-language': window.lang,
+        },
       },
-    });
+    );
     if (response.status >= 400 && response.status < 600) {
       throw response.statusText;
     }

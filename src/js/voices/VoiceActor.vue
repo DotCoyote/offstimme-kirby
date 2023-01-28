@@ -6,19 +6,19 @@ const props = defineProps<{
   actor: Voice.BASE;
 }>();
 
-const visibleDataIndex = ref(props.actor.content.voiceprobes.length ? props.actor.content.voiceprobes[0].id : '');
+const visibleDataIndex = ref(props.actor.content.voiceprobes.length ? props.actor.content.voiceprobes[0].uuid : '');
 
 const hasMultipleDataSets = computed(() => props.actor.content.voiceprobes.length > 1);
 
 const visibleDataSet = computed(() => {
-  const voiceFile = props.actor.files.find((file) => file.id === visibleDataIndex.value);
+  const voiceFile = props.actor.files.find((file) => file.uuid === visibleDataIndex.value);
   if (!voiceFile) {
     return undefined;
   }
 
   return {
     language: voiceFile.content.language,
-    flag: voiceFile.content.countryflag ? voiceFile.content.countryflag[0] : null,
+    flag: voiceFile.content.countryflag || null,
     audio: voiceFile.url,
   };
 });
@@ -32,16 +32,16 @@ function toggleVisibleDataIndex(fileId: string) {
   <div>
     <div class="flex flex-row justify-between h-8">
       <div v-if="visibleDataSet" class="flex flex-row items-center">
-        <img v-if="visibleDataSet.flag" :src="visibleDataSet.flag.url" :alt="visibleDataSet.language" />
+        <img v-if="visibleDataSet.flag" :src="visibleDataSet.flag" :alt="visibleDataSet.language" />
         <span class="ml-2">{{ visibleDataSet.language }}</span>
       </div>
       <div v-if="hasMultipleDataSets" class="flex flex-row">
         <button
           v-for="(file, index) in actor.content.voiceprobes"
-          :key="file.id"
+          :key="file.uuid"
           class="block px-3 py-1"
-          :class="{ 'bg-gray-700': file.id === visibleDataIndex, 'bg-gray-800': file.id !== visibleDataIndex }"
-          @click="toggleVisibleDataIndex(file.id)"
+          :class="{ 'bg-gray-700': file.uuid === visibleDataIndex, 'bg-gray-800': file.uuid !== visibleDataIndex }"
+          @click="toggleVisibleDataIndex(file.uuid)"
         >
           {{ index + 1 }}
         </button>

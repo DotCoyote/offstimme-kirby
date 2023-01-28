@@ -14,5 +14,9 @@ fields:
       value: "{{ structureItem.title }}"
   countryFlag:
     label: Language Country Flag
-    type: files
-    multiple: false
+    type: select
+    options:
+      type: query
+      query: page('languages').files
+      text: "{{ file.name }}"
+      value: "{{ file.url }}"

@@ -24,49 +24,6 @@ columns:
           male: Male
           diverse: Diverse
 
-
-      #          german: German
-      #          englishUK: English (England)
-      #          englishUS: English (USA)
-      #          spanish: Spanish
-      #          norwegian: Norwegian
-      #          arabic: Arabic
-      #          whiteRussian: White-Russian
-      #          bosnian: Bosnian
-      #          portugueseBraz: Portuguese (brazilian)
-      #          bulgarian: Bulgarian
-      #          englishCan: English (Canadian)
-      #          czech: Czech
-      #          danish: Danish
-      #          netherlands: Netherlands
-      #          estonian: Estonian
-      #          finnish: Finnish
-      #          french: French
-      #          greek: Greek
-      #          hindi: Hindi
-      #          hungarian: Hungarian
-      #          englishInd: English (Indian)
-      #          indonesian: Indonesian
-      #          englishIre: English (Ireland)
-      #          italian: Italian
-      #          japanese: Japanese
-      #          korean: Korean
-      #          latvian: Latvian
-      #          lithuanian: Lithuanian
-      #          malaysian: Malaysian
-      #          persian: Persian
-      #          polish: Polish
-      #          portuguese: Portuguese
-      #          frenchQueb: French (Quebecois)
-      #          romanian: Romanian
-      #          russian: Russian
-      #          englishScot: English (Scottish)
-      #          serbian: Serbian
-      #          slovak: Slovak
-      #          englishSA: English (South African)
-      #          swedish: Swedish
-      #          germanCH: German (Swiss)
-
       country:
         label: Country (Origin)
         type: text

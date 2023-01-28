@@ -87,5 +87,6 @@ export namespace VoiceFile {
     template: string;
     type: string;
     url: string;
+    uuid: string;
   }
 }
