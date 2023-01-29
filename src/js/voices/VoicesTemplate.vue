@@ -32,7 +32,7 @@ interface PostParams {
 
 const { mapUrlParams, selectedFilters } = useVoiceFilterOptions();
 
-async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage = 1) {
+async function requestVoices(newPage = 1) {
   const limit = 16;
   try {
     error.value = '';
@@ -43,38 +43,38 @@ async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage =
     window.history.pushState({ path: String(url) }, '', url);
 
     const postParams: PostParams = {
-      search: selectedFiltersFromForm.searchText || [],
+      search: selectedFilters.searchText || [],
       filterBy: [],
     };
 
     if (!postParams.filterBy) {
       return;
     }
-    if (selectedFiltersFromForm.voiceAge) {
+    if (selectedFilters.voiceAge) {
       postParams.filterBy.push({
         field: 'voiceAge',
-        value: [selectedFiltersFromForm.voiceAge],
+        value: [selectedFilters.voiceAge],
         operator: 'in',
       });
     }
-    if (selectedFiltersFromForm.language) {
+    if (selectedFilters.language) {
       postParams.filterBy.push({
         field: 'voiceProbes',
-        value: selectedFiltersFromForm.language,
+        value: selectedFilters.language,
         operator: '*=',
       });
     }
-    if (selectedFiltersFromForm.gender) {
+    if (selectedFilters.gender) {
       postParams.filterBy.push({
         field: 'sex',
-        value: [selectedFiltersFromForm.gender],
+        value: [selectedFilters.gender],
         operator: 'in',
       });
     }
-    if (selectedFiltersFromForm.voiceStyle) {
+    if (selectedFilters.voiceStyle) {
       postParams.filterBy.push({
         field: 'voiceStyle',
-        value: [selectedFiltersFromForm.voiceStyle],
+        value: [selectedFilters.voiceStyle],
         operator: 'in',
       });
     }
@@ -104,16 +104,21 @@ async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage =
 }
 
 function onFormSubmit(selectedFiltersFromForm: SelectedFilters) {
-  requestVoices(selectedFiltersFromForm);
+  Object.keys(selectedFilters).forEach((key) => {
+    if (key in selectedFiltersFromForm) {
+      selectedFilters[key] = selectedFiltersFromForm[key];
+    }
+  });
+  requestVoices();
 }
 
 onMounted(() => {
   mapUrlParams();
-  requestVoices(selectedFilters);
+  requestVoices();
 });
 
 async function onPageChange(newPage: number) {
-  await requestVoices(selectedFilters, newPage);
+  await requestVoices(newPage);
 }
 
 const itemsOnPage = computed(() => voices.value.length || 0);
