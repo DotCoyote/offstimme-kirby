@@ -1,20 +1,30 @@
 title: Voice Actor Languages
 
-sections:
-  content:
-    type: fields
-    fields:
-      languages:
-        label: Languages
-        type: structure
+columns:
+  main:
+    width: 2/3
+    sections:
+      content:
+        type: fields
         fields:
-          title:
-            label: Title
-            type: text
-          flag:
-            label: Language Country Flag
-            type: files
-            multiple: false
-          id:
-            label: id
-            type: slug
+          languages:
+            label: Languages
+            type: structure
+            fields:
+              title:
+                label: Title
+                type: text
+              id:
+                label: id
+                type: slug
+
+  sidebar:
+    width: 1/3
+    fields:
+      languageFlags:
+        label: Language Flags
+        type: files
+        multiple: true
+        upload:
+          accept: image/*
+
