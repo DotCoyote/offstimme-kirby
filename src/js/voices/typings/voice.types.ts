@@ -16,7 +16,7 @@ export namespace Voice {
     ratio: string;
   }
 
-  interface VoiceProbe {
+  interface VoiceProbeFile {
     id: string;
     image: Image;
     info: string;
@@ -28,6 +28,12 @@ export namespace Voice {
     dragText: string;
     type: string;
     url: string;
+  }
+
+  interface VoiceProbe {
+    file: VoiceProbeFile[];
+    flag: string;
+    language: string;
   }
 
   export interface Content {

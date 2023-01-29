@@ -26,7 +26,7 @@ const voicePaginationData = ref<Pagination>({
 });
 
 interface PostParams {
-  search?: string;
+  search?: string | any[];
   filterBy?: unknown[];
 }
 
@@ -43,7 +43,7 @@ async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage =
     window.history.pushState({ path: String(url) }, '', url);
 
     const postParams: PostParams = {
-      search: selectedFiltersFromForm.searchText || '',
+      search: selectedFiltersFromForm.searchText || [],
       filterBy: [],
     };
 
@@ -59,14 +59,14 @@ async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage =
     }
     if (selectedFiltersFromForm.language) {
       postParams.filterBy.push({
-        field: 'language',
-        value: [selectedFiltersFromForm.language],
-        operator: 'in',
+        field: 'voiceProbes',
+        value: selectedFiltersFromForm.language,
+        operator: '*=',
       });
     }
     if (selectedFiltersFromForm.gender) {
       postParams.filterBy.push({
-        field: 'gender',
+        field: 'sex',
         value: [selectedFiltersFromForm.gender],
         operator: 'in',
       });
@@ -79,7 +79,6 @@ async function requestVoices(selectedFiltersFromForm: SelectedFilters, newPage =
       });
     }
 
-    // const response = await fetch(`/api/voices/search?select=content,files&limit=${limit}&page=${newPage}`, {
     const response = await fetch(
       `/api/pages/stimmen/children/search?select=content,files&limit=${limit}&page=${newPage}`,
       {

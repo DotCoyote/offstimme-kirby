@@ -27,13 +27,35 @@ columns:
       country:
         label: Country (Origin)
         type: text
+
       voiceProbes:
         label: Voice Probes
-        type: files
-        uploads:
-          template: voices-audio
-          accept:
-            extension: mp3
+        type: structure
+        fields:
+          file:
+            label: MP3
+            type: files
+            multiple: false
+            uploads:
+              template: voices-audio
+              accept:
+                extension: mp3
+          language:
+            label: Language
+            type: select
+            options: query
+            query:
+              fetch: site.find("languages").languages.toStructure
+              text: "{{ structureItem.title }}"
+              value: "{{ structureItem.title }}"
+          flag:
+            label: Language Country Flag
+            type: select
+            options:
+              type: query
+              fetch: site.find("languages").files
+              text: "{{ file.name }}"
+              value: "{{ file.url }}"
 
   sidebar:
     width: 1/3

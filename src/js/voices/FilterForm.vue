@@ -54,7 +54,7 @@ onMounted(() => {
             v-for="language in languageOptions"
             :key="language.id"
             :selected="selectedFilters.language === language.id"
-            :value="language.id"
+            :value="language.title"
           >
             {{ language.title }}
           </option>
