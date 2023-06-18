@@ -55,5 +55,6 @@ export namespace Voice {
   export interface BASE {
     content: Content;
     files: VoiceFile.BASE[];
+    url: string;
   }
 }

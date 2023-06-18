@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { Voice } from './typings/voice.types';
+
+const { t } = useI18n();
 
 const props = defineProps<{
   actor: Voice.BASE;
@@ -31,7 +34,7 @@ function toggleVisibleDataIndex(fileId: string) {
 </script>
 
 <template>
-  <div>
+  <a :href="actor.url">
     <div class="flex flex-row justify-between h-8">
       <div v-if="visibleDataSet" class="flex flex-row items-center">
         <img v-if="visibleDataSet.flag" :src="visibleDataSet.flag" :alt="visibleDataSet.language" />
@@ -67,16 +70,41 @@ function toggleVisibleDataIndex(fileId: string) {
           <span class="text-sm">{{ actor.content.country }}</span>
         </div>
       </div>
-      <figure v-if="visibleDataSet" class="p-2 mt-4 w-full">
-        <audio controls :src="visibleDataSet.audio" class="w-full">
-          <p>
-            Your browser does not support HTML audio, but you can still
-            <a :href="visibleDataSet.audio">download the music</a>.
-          </p>
-        </audio>
-      </figure>
+      <div v-if="visibleDataSet" class="flex flex-row items-center mt-4">
+        <figure class="p-2 w-full">
+          <audio controls :src="visibleDataSet.audio" class="w-full">
+            <p>
+              Your browser does not support HTML audio, but you can still
+              <a :href="visibleDataSet.audio">download the music</a>.
+            </p>
+          </audio>
+        </figure>
+        <a
+          :href="visibleDataSet.audio"
+          download
+          :title="t('voiceActors.download')"
+          class="btn btn--primary inline-flex items-center text-white !p-2"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            class="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+            ></path>
+          </svg>
+          <span class="ml-2 sr-only">{t('voiceActors.download')}</span>
+        </a>
+      </div>
 
       <div class="flex flex-row-reverse p-2"><a href="" class="btn btn--primary">Request</a></div>
     </div>
-  </div>
+  </a>
 </template>
