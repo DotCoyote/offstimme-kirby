@@ -50,7 +50,7 @@ const results = computed(() =>
         :class="{
           'opacity-50 cursor-not-allowed': !hasPrevPage,
         }"
-        :href="prevPageUrl"
+        :href="prevPageUrl.toString()"
         class="block py-1 px-2 text-sm bg-gray-900"
         @click.prevent="hasPrevPage && onLinkClick(prevPageNum)"
       >
@@ -63,7 +63,7 @@ const results = computed(() =>
           'bg-primary': page === pagination.page,
           'bg-gray-900': page !== pagination.page,
         }"
-        :href="pageUrl(page)"
+        :href="pageUrl(page).toString()"
         class="block py-1 px-2 text-sm"
         @click.prevent="page !== pagination.page && onLinkClick(page)"
       >
@@ -73,7 +73,7 @@ const results = computed(() =>
         :class="{
           'opacity-50 cursor-not-allowed': !hasNextPage,
         }"
-        :href="nextPageUrl"
+        :href="nextPageUrl.toString()"
         class="block py-1 px-2 text-sm bg-gray-900"
         @click.prevent="hasNextPage && onLinkClick(nextPageNum)"
       >

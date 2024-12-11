@@ -114,7 +114,9 @@ function onFormSubmit(selectedFiltersFromForm: SelectedFilters) {
 
 onMounted(() => {
   mapUrlParams();
-  requestVoices();
+  const url = new URL(window.location.href);
+  const currentPage = parseInt(url.searchParams.get('page')?.toString() || '1', 10);
+  requestVoices(currentPage);
 });
 
 async function onPageChange(newPage: number) {
