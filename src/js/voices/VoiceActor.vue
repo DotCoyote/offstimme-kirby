@@ -49,7 +49,7 @@ function toggleVisibleDataIndex(fileId: string) {
             'bg-gray-700': file.file[0].uuid === visibleDataIndex,
             'bg-gray-800': file.file[0].uuid !== visibleDataIndex,
           }"
-          @click="toggleVisibleDataIndex(file.file[0].uuid)"
+          @click.prevent="toggleVisibleDataIndex(file.file[0].uuid)"
         >
           {{ index + 1 }}
         </button>

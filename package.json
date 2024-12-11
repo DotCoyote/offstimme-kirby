@@ -11,8 +11,8 @@
         "build": "vite build",
         "preview": "npm run build && npm run server",
         "prettier": "prettier",
-        "i18n:build": "ts-node-esm ./src/scripts/build-lang-files.ts && prettier --parser json-stringify --write src/locales/*.json",
-        "i18n:build:ci": "ts-node-esm ./src/scripts/build-lang-files.ts"
+        "i18n:build": "npx tsx ./src/scripts/build-lang-files.ts && prettier --parser json-stringify --write src/locales/*.json",
+        "i18n:build:ci": "npx tsx ./src/scripts/build-lang-files.ts"
     },
     "author": "arnoson",
     "license": "MIT",
