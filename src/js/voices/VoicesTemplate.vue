@@ -38,6 +38,7 @@ async function requestVoices(newPage = 1) {
     error.value = '';
     isLoading.value = true;
 
+    console.log(newPage);
     const url = new URL(window.location.href);
     url.searchParams.set('page', String(newPage));
     window.history.pushState({ path: String(url) }, '', url);

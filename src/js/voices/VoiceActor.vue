@@ -10,13 +10,15 @@ const props = defineProps<{
 }>();
 
 const visibleDataIndex = ref(
-  props.actor.content.voiceprobes.length ? props.actor.content.voiceprobes[0].file[0].uuid : '',
+  props.actor.content.voiceprobes.length && props.actor.content.voiceprobes[0].file.length
+    ? props.actor.content.voiceprobes[0].file[0].uuid
+    : '',
 );
 
 const hasMultipleDataSets = computed(() => props.actor.content.voiceprobes.length > 1);
 
 const visibleDataSet = computed(() => {
-  const voiceFile = props.actor.content.voiceprobes.find((file) => file.file[0].uuid === visibleDataIndex.value);
+  const voiceFile = props.actor.content.voiceprobes.find((file) => file.file[0]?.uuid === visibleDataIndex.value);
   if (!voiceFile) {
     return undefined;
   }
@@ -24,8 +26,13 @@ const visibleDataSet = computed(() => {
   return {
     language: voiceFile.language,
     flag: voiceFile.flag || null,
-    audio: voiceFile.file[0].url,
+    audio: voiceFile.file[0]?.url,
   };
+});
+
+const actorLink = computed(() => {
+  const currentUrl = new URL(window.location.href).toString().replace(window.location.origin, '');
+  return `${props.actor.url}?backlink=${decodeURI(currentUrl)}`;
 });
 
 function toggleVisibleDataIndex(fileId: string) {
@@ -34,25 +41,30 @@ function toggleVisibleDataIndex(fileId: string) {
 </script>
 
 <template>
-  <a :href="actor.url">
+  <a :href="actorLink">
     <div class="flex flex-row justify-between h-8">
       <div v-if="visibleDataSet" class="flex flex-row items-center">
         <img v-if="visibleDataSet.flag" :src="visibleDataSet.flag" :alt="visibleDataSet.language" />
         <span class="ml-2">{{ visibleDataSet.language }}</span>
       </div>
       <div v-if="hasMultipleDataSets" class="flex flex-row">
-        <button
-          v-for="(file, index) in actor.content.voiceprobes"
-          :key="file.file[0].uuid"
-          class="block px-3 py-1"
-          :class="{
-            'bg-gray-700': file.file[0].uuid === visibleDataIndex,
-            'bg-gray-800': file.file[0].uuid !== visibleDataIndex,
-          }"
-          @click.prevent="toggleVisibleDataIndex(file.file[0].uuid)"
-        >
-          {{ index + 1 }}
-        </button>
+        <template v-if="actor.content.voiceprobes.length">
+          <template v-for="(file, index) in actor.content.voiceprobes">
+            <template v-if="file.file.length">
+              <button
+                :key="file.file[0]?.uuid || index"
+                class="block px-3 py-1"
+                :class="{
+                  'bg-gray-700': file.file[0]?.uuid === visibleDataIndex,
+                  'bg-gray-800': file.file[0]?.uuid !== visibleDataIndex,
+                }"
+                @click.prevent="toggleVisibleDataIndex(file.file[0]?.uuid)"
+              >
+                {{ index + 1 }}
+              </button>
+            </template>
+          </template>
+        </template>
       </div>
     </div>
     <div class="block bg-gray-700">

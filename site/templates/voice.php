@@ -1,5 +1,8 @@
 <?php
 /** @var Kirby\Cms\Page $page */
+
+use Kirby\Http\Uri;
+
 ?>
 
 <?php snippet('header'); ?>
@@ -51,7 +54,7 @@
                             <th class="pr-4 text-left w-1/3">Voice Probe <br>
                                 <span class="inline-flex flex-row items-center">
                                 <?php if ($flag = $voiceProbe->flag()): ?>
-                                    <img src="<?= $flag->url() ?>" class="max-w-12 max-h-4 mr-2"/>
+                                    <img src="<?= $flag->url() ?>" class="max-w-12 max-h-4 mr-2" />
                                 <?php endif ?>
                             <span
                                 class="text-sm"><?= $voiceProbe->language() ?></span>
@@ -95,7 +98,11 @@
     </div>
 
     <div class="mt-8">
-        <a href="<?= $page->parent()->url() ?>" class="btn btn--primary"><?= t('back') ?></a>
+        <?php
+        $uri = Uri::current();
+        $backlink = $uri->query()->get('backlink');
+        ?>
+        <a href="<?= $backlink ?? $page->parent()->url() ?>" class="btn btn--primary"><?= t('back') ?></a>
     </div>
 </main>
 
