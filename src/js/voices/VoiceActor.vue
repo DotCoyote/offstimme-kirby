@@ -32,7 +32,7 @@ const visibleDataSet = computed(() => {
 
 const actorLink = computed(() => {
   const currentUrl = new URL(window.location.href).toString().replace(window.location.origin, '');
-  return `${props.actor.url}?backlink=${decodeURI(currentUrl)}`;
+  return `${props.actor.url}?backlink=${encodeURIComponent(currentUrl)}`;
 });
 
 function toggleVisibleDataIndex(fileId: string) {

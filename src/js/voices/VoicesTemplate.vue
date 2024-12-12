@@ -105,11 +105,19 @@ async function requestVoices(newPage = 1) {
 }
 
 function onFormSubmit(selectedFiltersFromForm: SelectedFilters) {
+  const url = new URL(window.location.href);
   Object.keys(selectedFilters).forEach((key) => {
     if (key in selectedFiltersFromForm) {
       selectedFilters[key] = selectedFiltersFromForm[key];
+      if (selectedFiltersFromForm[key] === null || selectedFiltersFromForm[key] === '') {
+        url.searchParams.delete(key);
+      } else {
+        url.searchParams.set(key, selectedFiltersFromForm[key]);
+      }
     }
   });
+  window.history.pushState({ path: url.href }, '', url.href);
+
   requestVoices();
 }
 

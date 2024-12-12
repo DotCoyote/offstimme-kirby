@@ -74,14 +74,30 @@ export function useVoiceFilterOptions() {
 
   function mapUrlParams() {
     const url = new URL(window.location.href);
-    const voiceGender = url.searchParams.get('voiceGender');
+    const voiceGender = url.searchParams.get('voiceGender') || url.searchParams.get('gender');
 
     if (voiceGender && voiceGender !== '-') {
       selectedFilters.gender = voiceGender;
     }
-    const voiceLanguage = url.searchParams.get('voiceLanguage');
+    const voiceLanguage = url.searchParams.get('voiceLanguage') || url.searchParams.get('language');
     if (voiceLanguage && voiceLanguage !== '-') {
       selectedFilters.language = voiceLanguage;
+    }
+    const voiceAge = url.searchParams.get('voiceAge');
+    if (voiceAge && voiceAge !== '-') {
+      selectedFilters.voiceAge = voiceAge;
+    }
+    const voiceStyle = url.searchParams.get('voiceStyle');
+    if (voiceStyle && voiceStyle !== '-') {
+      selectedFilters.voiceStyle = voiceStyle;
+    }
+    const gender = url.searchParams.get('gender');
+    if (gender && gender !== '-') {
+      selectedFilters.gender = gender;
+    }
+    const searchText = url.searchParams.get('searchText');
+    if (searchText && searchText !== '-') {
+      selectedFilters.searchText = searchText;
     }
   }
 
