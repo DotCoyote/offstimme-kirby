@@ -15,7 +15,7 @@ use Kirby\Http\Uri;
 <main class="container mt-12 max-w-2xl">
 
     <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        <div><?php if ($file = $page->file()): ?>
+        <div><?php if ($file = $page->image()): ?>
                 <img src="<?= $file->thumb(
                     [
                         'width' => 300,
